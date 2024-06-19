@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  custom-postgres:
+    hostname: postgres
+    image: postgres
+    container_name: postgres-cache
+    networks:
+      - my_network
+    ports:
+      - '5435:5432'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=redis_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+
+  custom-redis:
+    hostname: redis
+    image: redis
+    container_name: redis-cache1
+    networks:
+      - my_network
+    ports:
+      - '6375:6379'
+    volumes:
+      - redis_data:/data
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  my_network:

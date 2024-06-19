@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_CONNECTION_IP:127.0.0.1}:${DB_CONNECTION_PORT:5435}/${DB_CONNECTION_DATABASE:redis_db}?currentSchema=${DB_CONNECTION_SCHEMA:redis_schema}
+    username: ${DB_CONNECTION_USERNAME:postgres}
+    password: ${DB_CONNECTION_PASSWORD:password}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database: postgresql
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        default_schema: ${DB_CONNECTION_SCHEMA:redis_schema}

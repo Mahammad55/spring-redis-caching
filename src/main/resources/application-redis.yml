@@ -1,0 +1,9 @@
+spring:
+  data:
+    redis:
+      host: localhost
+      port: 6375
+
+redis:
+  server:
+    urls: redis://localhost:6375
